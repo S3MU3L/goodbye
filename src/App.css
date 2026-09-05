@@ -1,0 +1,1051 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: #050505;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* =========================
+   OPENING
+========================= */
+
+.opening {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255, 255, 255, 0.08),
+      transparent 35%
+    ),
+    #050505;
+}
+
+.opening::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.025);
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.opening-content {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 30px;
+}
+
+.opening h1 {
+  font-size: clamp(4rem, 13vw, 9rem);
+  line-height: 0.85;
+  font-weight: 300;
+  letter-spacing: -0.07em;
+}
+
+.opening h1 span {
+  display: block;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.opening-text {
+  max-width: 400px;
+  margin: 40px auto 0;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.enter-button {
+  margin-top: 42px;
+  padding: 14px 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.enter-button:hover {
+  background: white;
+  color: black;
+}
+
+/* =========================
+   STORY
+========================= */
+
+.story {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 80px 24px;
+
+  background:
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(255, 255, 255, 0.05),
+      transparent 35%
+    ),
+    #050505;
+}
+
+.story-content {
+  width: min(800px, 100%);
+  text-align: center;
+}
+
+.story-content h2 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: -0.05em;
+  margin-bottom: 45px;
+}
+
+.story-content p:not(.eyebrow) {
+  max-width: 620px;
+  margin: 0 auto 24px;
+
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+/* =========================
+   MEMORIES
+========================= */
+
+.memories {
+  min-height: 100vh;
+  padding: 120px 24px;
+
+  background:
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(255, 255, 255, 0.035),
+      transparent 30%
+    ),
+    #050505;
+}
+
+.memories-header {
+  width: min(850px, 100%);
+  margin: 0 auto 70px;
+  text-align: center;
+}
+
+.memories-header h2 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.95;
+  font-weight: 300;
+  letter-spacing: -0.06em;
+}
+
+.memories-header h2 span {
+  display: block;
+  font-style: italic;
+}
+
+.memories-intro {
+  max-width: 500px;
+  margin: 35px auto 0;
+
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.8;
+}
+
+/* =========================
+   MEMORY GRID
+========================= */
+
+.memory-grid {
+  width: min(1100px, 100%);
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.memory-card {
+  position: relative;
+
+  width: 100%;
+  height: 480px;
+
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+
+  border-radius: 4px;
+
+  background: #111;
+
+  cursor: pointer;
+  text-align: left;
+}
+
+.memory-card:nth-child(2) {
+  margin-top: 80px;
+}
+
+.memory-card:nth-child(3) {
+  margin-top: -40px;
+}
+
+.memory-card:nth-child(4) {
+  margin-top: 40px;
+}
+
+.memory-card img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: transform 0.8s ease;
+}
+
+.memory-card:hover img {
+  transform: scale(1.06);
+}
+
+.memory-card::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 60%);
+}
+
+.memory-overlay {
+  position: absolute;
+
+  left: 28px;
+  right: 28px;
+  bottom: 28px;
+
+  z-index: 2;
+  color: white;
+}
+
+.memory-overlay span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.memory-overlay h3 {
+  font-size: 1.7rem;
+  font-weight: 400;
+}
+
+/* =========================
+   MEMORY MODAL
+========================= */
+
+.memory-modal {
+  position: fixed;
+  inset: 0;
+
+  z-index: 100;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px;
+
+  background: rgba(0, 0, 0, 0.85);
+
+  backdrop-filter: blur(15px);
+}
+
+.memory-modal-content {
+  width: min(900px, 100%);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  overflow: hidden;
+
+  background: #111;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.memory-modal-content img {
+  width: 100%;
+  height: 500px;
+
+  object-fit: cover;
+}
+
+.memory-modal-text {
+  padding: 50px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.memory-number {
+  color: rgba(255, 255, 255, 0.35);
+
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.memory-modal-text h3 {
+  margin: 20px 0;
+
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+.memory-modal-text > p:last-of-type {
+  color: rgba(255, 255, 255, 0.55);
+
+  line-height: 1.8;
+}
+
+.close-memory {
+  align-self: flex-start;
+
+  margin-top: 35px;
+
+  padding: 11px 22px;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+
+  background: transparent;
+  color: white;
+
+  cursor: pointer;
+}
+
+.close-memory:hover {
+  background: white;
+  color: black;
+}
+
+/* =========================
+   SCROLL HINT
+========================= */
+
+.scroll-hint {
+  margin-top: 70px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  color: rgba(255, 255, 255, 0.3);
+
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.scroll-hint div {
+  width: 1px;
+  height: 45px;
+
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .memories {
+    padding: 90px 18px;
+  }
+
+  .memories-header {
+    margin-bottom: 45px;
+  }
+
+  .memory-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .memory-card {
+    height: 420px;
+  }
+
+  .memory-card:nth-child(2),
+  .memory-card:nth-child(3),
+  .memory-card:nth-child(4) {
+    margin-top: 0;
+  }
+
+  .memory-modal {
+    padding: 15px;
+  }
+
+  .memory-modal-content {
+    grid-template-columns: 1fr;
+
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .memory-modal-content img {
+    height: 300px;
+  }
+
+  .memory-modal-text {
+    padding: 30px;
+  }
+
+  .memory-modal-text h3 {
+    font-size: 2rem;
+  }
+}
+
+/* =========================
+   THINGS I WANT YOU TO KNOW
+========================= */
+
+.things-section {
+  min-height: 100vh;
+  padding: 140px 24px;
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 255, 255, 0.04),
+      transparent 35%
+    ),
+    #050505;
+}
+
+.things-header {
+  width: min(800px, 100%);
+  margin: 0 auto 80px;
+  text-align: center;
+}
+
+.things-header h2 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.95;
+  font-weight: 300;
+  letter-spacing: -0.06em;
+}
+
+.things-header h2 span {
+  display: block;
+  font-style: italic;
+}
+
+.things-header > p:last-child {
+  margin-top: 35px;
+
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.7;
+}
+
+/* =========================
+   THOUGHT CARDS
+========================= */
+
+.thoughts-list {
+  width: min(900px, 100%);
+  margin: 0 auto;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.thought-card {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 80px 1fr 40px;
+  gap: 30px;
+  align-items: center;
+
+  padding: 45px 20px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+  transition:
+    background 0.4s ease,
+    padding 0.4s ease;
+}
+
+.thought-card:hover {
+  padding-left: 35px;
+  padding-right: 35px;
+
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.thought-number {
+  color: rgba(255, 255, 255, 0.3);
+
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+}
+
+.thought-content h3 {
+  margin-bottom: 12px;
+
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 400;
+}
+
+.thought-content p {
+  max-width: 600px;
+
+  color: rgba(255, 255, 255, 0.5);
+
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.thought-arrow {
+  color: rgba(255, 255, 255, 0.35);
+
+  font-size: 1.4rem;
+
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.thought-card:hover .thought-arrow {
+  color: white;
+  transform: translate(4px, -4px);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .things-section {
+    padding: 100px 18px;
+  }
+
+  .things-header {
+    margin-bottom: 55px;
+  }
+
+  .thought-card {
+    grid-template-columns: 40px 1fr 20px;
+    gap: 15px;
+
+    padding: 32px 5px;
+  }
+
+  .thought-card:hover {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .thought-content h3 {
+    font-size: 1.45rem;
+  }
+
+  .thought-content p {
+    font-size: 0.9rem;
+  }
+
+  .thought-arrow {
+    font-size: 1rem;
+  }
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-section {
+  min-height: 100vh;
+
+  padding: 150px 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.035),
+      transparent 45%
+    ),
+    #050505;
+}
+
+.letter-container {
+  width: min(850px, 100%);
+
+  padding: 55px 60px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.4);
+
+  position: relative;
+}
+
+/* =========================
+   LETTER HEADER
+========================= */
+
+.letter-top {
+  display: flex;
+  justify-content: space-between;
+
+  padding-bottom: 25px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  color: rgba(255, 255, 255, 0.3);
+
+  font-size: 0.65rem;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+}
+
+/* =========================
+   LETTER CONTENT
+========================= */
+
+.letter-content {
+  padding: 70px 25px 30px;
+
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.letter-greeting {
+  font-size: 2rem;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  margin-bottom: 45px;
+}
+
+.letter-content p:not(.letter-greeting):not(.letter-final) {
+  margin-bottom: 30px;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 1.05rem;
+
+  line-height: 2;
+}
+
+.letter-final {
+  margin-top: 55px;
+
+  color: white;
+
+  font-size: 1.5rem;
+
+  line-height: 1.6;
+
+  font-style: italic;
+}
+
+/* =========================
+   SIGNATURE
+========================= */
+
+.letter-signature {
+  margin-top: 60px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.letter-signature span {
+  color: rgba(255, 255, 255, 0.4);
+
+  font-size: 0.9rem;
+}
+
+.letter-signature strong {
+  font-size: 2rem;
+
+  font-weight: 400;
+
+  font-style: italic;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .letter-section {
+    padding: 90px 16px;
+  }
+
+  .letter-container {
+    padding: 30px 22px;
+  }
+
+  .letter-content {
+    padding: 50px 5px 20px;
+  }
+
+  .letter-greeting {
+    font-size: 1.7rem;
+
+    margin-bottom: 35px;
+  }
+
+  .letter-content p:not(.letter-greeting):not(.letter-final) {
+    font-size: 0.95rem;
+
+    line-height: 1.9;
+
+    margin-bottom: 25px;
+  }
+
+  .letter-final {
+    font-size: 1.25rem;
+  }
+}
+
+/* =========================
+   FINAL SCENE
+========================= */
+
+.final-section {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 120px 24px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255, 255, 255, 0.07),
+      transparent 30%
+    ),
+    #050505;
+}
+
+.final-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 450px;
+  height: 450px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+.final-content {
+  width: min(850px, 100%);
+
+  position: relative;
+
+  text-align: center;
+}
+
+.final-content h2 {
+  font-size: clamp(3.5rem, 9vw, 7rem);
+
+  line-height: 0.92;
+
+  font-weight: 300;
+
+  letter-spacing: -0.07em;
+}
+
+.final-content h2 span {
+  display: block;
+
+  font-style: italic;
+}
+
+.final-intro {
+  margin-top: 35px;
+
+  color: rgba(255, 255, 255, 0.45);
+
+  font-size: 1rem;
+
+  letter-spacing: 0.08em;
+}
+
+/* =========================
+   LAST BUTTON
+========================= */
+
+.last-button {
+  margin-top: 50px;
+
+  padding: 15px 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  color: white;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.last-button:hover {
+  background: white;
+
+  color: black;
+}
+
+/* =========================
+   FINAL MESSAGE
+========================= */
+
+.final-message {
+  margin-top: 80px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.final-line {
+  width: 1px;
+
+  height: 60px;
+
+  margin-bottom: 35px;
+
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.final-name {
+  color: rgba(255, 255, 255, 0.35);
+
+  font-size: 0.7rem;
+
+  letter-spacing: 0.3em;
+
+  text-transform: uppercase;
+}
+
+.final-message h3 {
+  max-width: 700px;
+
+  margin-top: 25px;
+
+  font-size: clamp(2rem, 5vw, 4rem);
+
+  line-height: 1.1;
+
+  font-weight: 300;
+
+  letter-spacing: -0.04em;
+}
+
+.final-message h3 span {
+  display: block;
+
+  font-style: italic;
+
+  margin-top: 8px;
+}
+
+.final-text {
+  max-width: 500px;
+
+  margin-top: 30px;
+
+  color: rgba(255, 255, 255, 0.5);
+
+  line-height: 1.8;
+
+  font-size: 0.95rem;
+}
+
+.final-goodbye {
+  margin-top: 45px;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 1.2rem;
+
+  font-style: italic;
+}
+
+.final-heart {
+  margin-top: 35px;
+
+  font-size: 2rem;
+
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .final-section {
+    padding: 90px 20px;
+  }
+
+  .final-content h2 {
+    font-size: clamp(3rem, 15vw, 5rem);
+  }
+
+  .final-message {
+    margin-top: 60px;
+  }
+
+  .final-message h3 {
+    font-size: 2rem;
+  }
+
+  .final-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================
+   SCROLL PROGRESS
+========================= */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+
+  background: rgba(255, 255, 255, 0.8);
+
+  z-index: 9999;
+
+  transition: width 0.1s linear;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .opening {
+    padding: 20px;
+  }
+
+  .opening h1 {
+    font-size: clamp(3.8rem, 19vw, 6rem);
+  }
+
+  .opening-text {
+    margin-top: 30px;
+    font-size: 0.9rem;
+  }
+
+  .story {
+    padding: 60px 22px;
+  }
+
+  .story-content h2 {
+    font-size: 3rem;
+    margin-bottom: 35px;
+  }
+
+  .story-content p:not(.eyebrow) {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+}
