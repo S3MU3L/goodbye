@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import Memories from "./components/Memories";
 import ThingsIWantYouToKnow from "./components/ThingsIWantYouToKnow";
-import Letter from "./components/letter";
+import Letter from "./components/Letter";
 import FinalScene from "./components/FinalScene";
 import MusicPlayer from "./components/MusicPlayer";
 
